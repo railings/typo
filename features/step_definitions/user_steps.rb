@@ -1,4 +1,4 @@
-Given /^there is a logged in user$/ do
+Given /^I am a logged in user$/ do
   visit '/accounts/login'
   fill_in 'user_login', :with => 'user2'
   fill_in 'user_password', :with => 'bbbbbbbb'

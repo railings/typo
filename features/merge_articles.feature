@@ -12,15 +12,15 @@ Feature: Merge Articles
       | "Article 2" | "The similar body of the second article" |
 
   Scenario: Blog user can see own posts
-    Given there is a logged in user
+    Given I am a logged in user
     When  I am on the home page
     Then  I should see "Article 1"
     And   I should see "Article 2"
 
   Scenario: Article Merging form is not shown for non-admin user
-    Given there is a logged in user
+    Given I am a logged in user
     When  I follow "All Articles"
-    Then  I follow "Article 1"
+    And   I follow "Article 1"
     Then  I should not see "Merge Articles"
 
   Scenario: Admin can see Merge Articles form
@@ -28,3 +28,9 @@ Feature: Merge Articles
     When  I follow "All Articles"
     And   I follow "Article 1"
     Then  I should see "Merge Articles"
+
+  Scenario: Admin cannot see Merge Articles form when creating a New Article
+    Given I am logged into the admin panel
+    And   I follow "New Article"
+    Then  I should not see "Merge Articles"
+
